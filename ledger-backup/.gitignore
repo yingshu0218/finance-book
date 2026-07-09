@@ -1,0 +1,8 @@
+.ledger/
+ledger
+*.db
+web/node_modules/
+web/dist/
+web/.env
+.DS_Store
+*.log
