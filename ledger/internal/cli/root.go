@@ -5,6 +5,8 @@ import (
 	"os"
 
 	"github.com/spf13/cobra"
+
+	"ledger/internal/app"
 )
 
 var rootCmd = &cobra.Command{
@@ -18,4 +20,17 @@ func Execute() {
 		fmt.Println(err)
 		os.Exit(1)
 	}
+}
+
+func init() {
+	if err := app.Init(); err != nil {
+		fmt.Printf("初始化失败: %v\n", err)
+		os.Exit(1)
+	}
+
+	rootCmd.AddCommand(addCmd)
+	rootCmd.AddCommand(listCmd)
+	rootCmd.AddCommand(balanceCmd)
+	rootCmd.AddCommand(bookCmd)
+	rootCmd.AddCommand(serveCmd)
 }
