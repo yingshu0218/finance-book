@@ -102,4 +102,11 @@ func (r *Repository) Delete(id int) error {
 	return err
 }
 
+func (r *Repository) Close() error {
+	if r.db != nil {
+		return r.db.Close()
+	}
+	return nil
+}
+
 var ErrEntryNotFound = fmt.Errorf("entry not found")
